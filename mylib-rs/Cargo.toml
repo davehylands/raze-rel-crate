@@ -1,0 +1,24 @@
+[package]
+name = "mylib"
+version = "0.1.0"
+authors = ["Dave Hylands <davehylands@fullstory.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[lib]
+name = "mylib"
+path = "src/lib.rs"
+
+[package.metadata.raze]
+# The path relative path to the Bazel workspace root (location of
+# WORKSPACE.bazel/WORKSPACE file). If no workspace file is found,
+# the current working directory is used.
+workspace_path = "//mylib-rs/cargo"
+output_buildfile_suffix = "BUILD.bazel"
+
+# The target to generate BUILD rules for.
+target = "x86_64-unknown-linux-gnu"
+genmode = "Vendored"
